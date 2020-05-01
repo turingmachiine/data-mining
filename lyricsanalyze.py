@@ -9,7 +9,7 @@ def lemmatize(text, artist_name, song_name):
                  '?', '!', '#', 'i', 'i\'m', 'the', 'a', 'do', 'be', 'and', 'or', 'that', 'these', 'those', 'o', 'not'
                  'verse', '1', '2', '3', '4']
     text = text.lower()
-    nlp = spacy.load('en', disable=['parser', 'ner'])
+    nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
     sentencies = text.split('\n')
     for sentence in sentencies:
         doc = nlp(sentence)
@@ -19,7 +19,7 @@ def lemmatize(text, artist_name, song_name):
                 query.append(word.lemma_)
                 query.append(str(artist_name))
                 query.append(str(song_name))
-                cur.execute("INSERT INTO songs_test VALUES (%s, %s, %s)", query)
+                cur.execute("INSERT INTO lyrics VALUES (%s, %s, %s)", query)
                 print(word.lemma_)
 
 
@@ -52,6 +52,6 @@ con = psycopg2.connect(
 con.autocommit = True
 cur = con.cursor()
 genius = lyricsgenius.Genius("vRZ1JlhlTs-vb-rWoyF7mpl62dU1CD4gGHDzAKaNQ1drtGRBpl85gftCAWstFlBu")
-find_songs("The Weeknd", 10)
-find_songs("Kendrick Lamar", 5)
-find_songs("Tyler, The Creator", 5)
+find_songs("The Weeknd", 3)
+find_songs("Kendrick Lamar", 3)
+find_songs("Tyler, The Creator", 3)
