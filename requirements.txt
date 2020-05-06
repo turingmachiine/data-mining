@@ -2,3 +2,5 @@ numpy
 psycopg2
 lyricsgenius
 spacy
+math
+zlib
