@@ -57,9 +57,12 @@ for key in pair_frequents.keys():
         if first_buckets[hash1] >= 3 and second_buckets[hash2] >= 3:
             good_pairs.add(key)
 
-print(len(good_pairs))
 print(good_pairs)
+f1 = open('output.txt', 'w')
+f1.write(good_pairs.__str__())
 for key in frequents.keys():
     if frequents[key] >= 3:
-        print(key)
+        f1.write(key)
+        f1.write('\n')
+
 
