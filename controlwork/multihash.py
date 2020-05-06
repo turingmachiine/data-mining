@@ -59,4 +59,7 @@ for key in pair_frequents.keys():
 
 print(len(good_pairs))
 print(good_pairs)
+for key in frequents.keys():
+    if frequents[key] >= 3:
+        print(key)
 
